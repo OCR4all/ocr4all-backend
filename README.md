@@ -15,7 +15,7 @@ Master repository containing all required submodules to get the new OCR4all back
 ### Download
 * Clone this repository recursively
 ```
-git clone --recurse-submodules --remote-submodules https://github.com/OCR4all/ocr4all-backend.git
+git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4all-backend.git
 ```
 ### Build 
 * To build and run the `ocr4all-app`, either use your favorite IDE or create a JAR through your terminal:
