@@ -26,9 +26,9 @@ git clone --recurse-submodules --remote-submodules https://github.com/OCR4all/oc
 #### Terminal
 - run `mvn clean install` in following projects in this order 
   1. zpd-ocr-ocr4all-app-persistence
-  2. zpd-ocr-ocr4all-app-ocrd-spi
-  3. zpd-ocr-ocr4all-app
-- run `mvn clean package` in the project `zpd-ocr-ocr4all-app-spi`
+  2. zpd-ocr-ocr4all-app-spi
+  3. zpd-ocr-ocr4all-app-ocrd-spi
+- run `mvn clean package` in the project `zpd-ocr-ocr4all-app`
 - start with `java -jar target/ocr4all-app-1.0-SNAPSHOT.jar`
 ### Usage
 - Running in server mode, add initial user in users, passwords and groups in `ocr4all/workspace/.ocr4all` (see below for an example setup)
@@ -40,6 +40,14 @@ git clone --recurse-submodules --remote-submodules https://github.com/OCR4all/oc
 - **File group** `admin:active:test:Administrator group_`
 
 
+#### Using `ImageImport' service provider to import images in the project from exchange folder
+- Install `ImageMagick' from `https://imagemagick.org/script/download.php`
+  - **linux** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
+  - **mac** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
+  - **windows** the default version is 7.1.0, so the `convert` and `identify` commands should be installed in the `C:/Programs/ImageMagick-7.1.0` directory
+  
+  The default paths for the values of the `convert` and `identify` commands can be overwritten in the `ocr4all/workspace/.ocr4all` file
+
 #### Using ocr-d processors
 - Enable / Start docker
   - `systemctl enable docker`
@@ -48,7 +56,7 @@ git clone --recurse-submodules --remote-submodules https://github.com/OCR4all/oc
   - `docker pull ocrd/all:maximum`
 - Install models in `ocr4all/opt/ocr-d/resources`
   - Calamari 
-    - Download models:
+    - Download models in subfolder `calamari`:
       - `https://github.com/Calamari-OCR/calamari_models/releases/tag/1.1`
 
 # API 
