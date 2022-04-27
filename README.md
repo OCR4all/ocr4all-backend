@@ -46,7 +46,7 @@ git clone --recurse-submodules --remote-submodules https://github.com/OCR4all/oc
   - **mac** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
   - **windows** the default version is 7.1.0, so the `convert` and `identify` commands should be installed in the `C:/Programs/ImageMagick-7.1.0` directory
   
-  The default paths for the values of the `convert` and `identify` commands can be overwritten in the `ocr4all/workspace/.ocr4all` file
+  The default paths for the `convert` and `identify` commands can be overwritten in the `ocr4all/workspace/.ocr4all` file
 
 #### Using ocr-d processors
 - Enable / Start docker
