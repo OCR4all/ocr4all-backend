@@ -28,8 +28,9 @@ git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4al
   1. ocr4all-app-persistence
   2. ocr4all-app-spi
   3. ocr4all-app-ocrd-spi
-- run `mvn clean package` in the project `ocr4all-app`
-- start with `java -jar target/ocr4all-app-1.0-SNAPSHOT.jar`
+- in the project `ocr4all-app`
+  1. run `mvn clean package` 
+  2. start the application with `java -jar target/ocr4all-app-1.0-SNAPSHOT.jar`
 ### Usage
 - Running in server mode, add initial user in users, passwords and groups in `ocr4all/workspace/.ocr4all` (see below for an example setup)
 - afterwards the API can be used to manage the users
@@ -55,9 +56,7 @@ git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4al
 - Fetch the ocr-d Docker image (optional, since will be done automatically when using am ocr-d processor for first time)
   - `docker pull ocrd/all:maximum`
 - Install models in `ocr4all/opt/ocr-d/resources`
-  - Calamari 
-    - Download models in subfolder `calamari`:
-      - `https://github.com/Calamari-OCR/calamari_models/releases/tag/1.1`
+  - **Calamari** download desired [models](https://github.com/Calamari-OCR/calamari_models/releases/tag/1.1) in subfolder `calamari`
 
 # API 
 ## API documentation
