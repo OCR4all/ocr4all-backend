@@ -41,7 +41,7 @@ git clone --recurse-submodules --remote-submodules https://github.com/OCR4all/oc
 
 
 #### Using `ImageImport' service provider to import images in the project from exchange folder
-- Install [ImageMagick` ]™™https://imagemagick.org/script/download.php`
+- Install [ImageMagick](https://imagemagick.org/script/download.php)
   - **linux** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
   - **mac** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
   - **windows** the default version is 7.1.0, so the `convert` and `identify` commands should be installed in the `C:/Programs/ImageMagick-7.1.0` directory
