@@ -1,16 +1,16 @@
 [submodule "ocr4all-app-spi"]
 	path = ocr4all-app-spi
-	url = https://github.com/OCR4all/ocr4all-app-spi.git
+	url = git@github.com:OCR4all/ocr4all-app-spi.git
 	branch = develop
 [submodule "ocr4all-app-persistence"]
 	path = ocr4all-app-persistence
-	url = https://github.com/OCR4all/ocr4all-app-persistence.git
+	url = git@github.com:OCR4all/ocr4all-app-persistence.git
 	branch = develop
 [submodule "ocr4all-app-ocrd-spi"]
 	path = ocr4all-app-ocrd-spi
-	url = https://github.com/OCR4all/ocr4all-app-ocrd-spi
+	url = git@github.com:OCR4all/ocr4all-app-ocrd-spi
 	branch = develop
 [submodule "ocr4all-app"]
 	path = ocr4all-app
-	url = https://github.com/OCR4all/ocr4all-app.git
+	url = git@github.com:OCR4all/ocr4all-app.git
 	branch = develop
