@@ -162,7 +162,7 @@ Method: POST
 URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/ws_01
 Body:
 {
-“id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.Calamari”,
+“id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.CalamariRecognize”,
 “parent-snapshot”: {“track”: [1,1,1]},
 “name”: “Calamari default”,
 “description”: “ocr-d Calamari default”
