@@ -56,7 +56,7 @@ git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4al
 - Fetch the ocr-d Docker image (optional, since will be done automatically when using am ocr-d processor for first time)
   - `docker pull ocrd/all:maximum`
 - Install models in `ocr4all/opt/ocr-d/resources`
-  - **Calamari** download desired [models](https://github.com/Calamari-OCR/calamari_models/releases/tag/1.1) in subfolder `calamari`
+  - **Calamari recognize** download desired [models](https://github.com/Calamari-OCR/calamari_models/releases/tag/1.1) in subfolder `ocrd-calamari-recognize`
 
 # API 
 ## API documentation
@@ -157,7 +157,7 @@ Body:
 “description”: “ocr-d tesserocr segment line default”
 }
 
-ocr: Calamari
+ocr: Calamari recognize
 Method: POST
 URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/ws_01
 Body:
