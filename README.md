@@ -19,10 +19,12 @@ git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4al
 ```
 ### Build 
 * To build and run the `ocr4all-app`, either use your favorite IDE or create a JAR through your terminal:
+
 #### IDE
 - installing [Spring Tools](https://spring.io/tools) is heavily recommended
 - import all contained submodules as Maven project in the above-mentioned sequence in your IDE
 - start the application using `Spring Tools` in `Boot Dashboard`
+
 #### Terminal
 - run `mvn clean install` in following projects in this order 
   1. ocr4all-app-persistence
@@ -31,17 +33,23 @@ git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4al
 - in the project `ocr4all-app`
   1. run `mvn clean package` 
   2. start the application with `java -jar target/ocr4all-app-1.0-SNAPSHOT.jar`
-### Usage
-- Running in server mode, add initial user in users, passwords and groups in `ocr4all/workspace/.ocr4all` (see below for an example setup)
-- afterwards the API can be used to manage the users
+
+### Security
+Authentication/authorisation is enabled in server mode. It is not required in desktop mode.
+
+Authentication/authorisation is configured in the following files in the `ocr4all/workspace/.ocr4all` folder (see below for an example setup): users, passwords and groups.
+After authentication in the application with administrative rights, the API can be used to manage users, passwords and groups.
+
+When the application starts in server mode and development mode is enabled, a default administrator user with login `admin` and password `ocr4all` is created if no administrator user exists.
+This behaviour can be enforced by setting the application property `ocr4all.application.security.administrator.create` to `true`.
 
 #### Example: rights management setup
-- **File user** `test:active:test@ocr4all.org:Test User`
-- **File password** (password pico) `test:{bcrypt}$2a$10$Z.SDcKGSnYibWzuBoJcrOeXj.95WXtg1X1dDT76HeaGz/svM5ua1.`
-- **File group** `admin:active:test:Administrator group`
+- **File user** `admin:active::Administrator user`
+- **File password** (password `ocr4all`) `admin:{bcrypt}$2a$10$rqYn8YjNLzegNMYZVFtvAuwAZBWFgZQ9bprHhjhHnk3oGUPdEPkYq`
+- **File group** `admin:active:admin:Administrator group`
 
 
-#### Using `ImageImport' service provider to import images in the project from exchange folder
+#### Using `ImageImport` service provider to import images in the project from exchange folder
 - Install [ImageMagick](https://imagemagick.org/script/download.php)
   - **linux** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
   - **mac** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
