@@ -14,13 +14,13 @@ Master repository containing all required submodules to get the new OCR4all back
 * `mvn`
 
 ### Download
-* Clone this repository recursively
+Clone this repository recursively
 ```
 git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4all-backend.git
 ```
 
 ### Build 
-* To build and run the `ocr4all-app`, either use your favorite IDE or create a JAR through your terminal:
+To build and run the `ocr4all-app`, either use your favorite IDE or create a JAR through your terminal:
 
 #### IDE
 - installing [Spring Tools](https://spring.io/tools) is heavily recommended
@@ -64,12 +64,12 @@ If the application uses server profile and, development profile is enabled and/o
 
 
 #### Using `ImageImport` service provider to import images in the project from exchange folder
-- Install [ImageMagick](https://imagemagick.org/script/download.php)
+Install [ImageMagick](https://imagemagick.org/script/download.php):
   - **linux** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
   - **mac** the `convert` and `identify` commands should be installed in the `/usr/bin` directory
   - **windows** the default version is 7.1.0, so the `convert` and `identify` commands should be installed in the `C:/Programs/ImageMagick-7.1.0` directory
   
-  The default paths for the `convert` and `identify` commands can be overwritten in the `ocr4all/workspace/.ocr4all` file
+  The default paths for the `convert` and `identify` commands can be overwritten in the configuration file `ocr4all/workspace/.ocr4all`
 
 #### Using ocr-d processors
 - Enable / Start docker
@@ -77,8 +77,9 @@ If the application uses server profile and, development profile is enabled and/o
   - `systemctl start docker`
 - Fetch the ocr-d Docker image (optional, since will be done automatically when using am ocr-d processor for first time)
   - `docker pull ocrd/all:maximum`
-- Install models in `ocr4all/opt/ocr-d/resources`
+- Install models in `ocr4all/opt/ocr-d/resources` (see [ocr-d resource list](https://github.com/OCR-D/core/blob/master/ocrd/ocrd/resource_list.yml))
   - **Calamari recognize** download desired [models](https://github.com/Calamari-OCR/calamari_models/releases/tag/1.1) in subfolder `ocrd-calamari-recognize`
+  - **Tesserocr recognize** download desired models  in subfolder `ocrd-tesserocr-recognize`
 
 ## API 
 ### API documentation
@@ -190,18 +191,18 @@ Body:
 “description”: “ocr-d Calamari default”
 }
 
-ocr: Tesseract recognize
+ocr: Tesserocr recognize
 Method: POST
 URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/ws_01
 Body:
 {
 “id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.TesserocrRecognize”,
 “parent-snapshot”: {“track”: [1,1,1]},
-“name”: “Tesseract default”,
-“description”: “ocr-d Tesseract default”
+“name”: “Tesserocr default”,
+“description”: “ocr-d Tesserocr default”
 }
 ```
 
 Results will be available in the directories:
-- **Calamari** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
-- **Tesseract** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/2/sandbox`
+- **Calamari recognize** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
+- **Tesserocr recognize** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/2/sandbox`
