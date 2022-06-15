@@ -12,11 +12,13 @@ Master repository containing all required submodules to get the new OCR4all back
 * `git`
 * `Java 11`
 * `mvn`
+
 ### Download
 * Clone this repository recursively
 ```
 git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4all-backend.git
 ```
+
 ### Build 
 * To build and run the `ocr4all-app`, either use your favorite IDE or create a JAR through your terminal:
 
@@ -30,20 +32,32 @@ git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4al
   1. ocr4all-app-persistence
   2. ocr4all-app-spi
   3. ocr4all-app-ocrd-spi
-- in the project `ocr4all-app`
-  1. run `mvn clean package` 
-  2. start the application with `java -jar target/ocr4all-app-1.0-SNAPSHOT.jar`
+- in the project `ocr4all-app` run `mvn clean package` 
 
-### Security
-Authentication/authorisation is enabled in server mode. It is not required in desktop mode.
+### Application
+
+Start the application in the project `ocr4all-app` with `java -jar target/ocr4all-app-1.0-SNAPSHOT.jar`.
+
+#### Defaults
+
+The defaults for the application are defined in the file `src/main/resources/application.ymly` of the project `ocr4all-app`. The server HTTP port is 8080. Several profiles are defined that can be used to control the behaviour of the application:
+- **desktop** disables security and stores the application data in the user's home directory `${user.home}/ocr4all`.
+- **server** enables security and stores the application data in the system directory `/srv/ocr4all`.
+- **api** activates the RESTful API interface
+- **documentation** activates the RESTful API documentation with Swagger 2 
+- **development** uses server HTTP port 9090, provides more logging information and stores application data in the user's home directory `${user.home}/ocr4all`.
+
+The development version uses the following profiles by default: server, api, documentation and development.
+
+#### Security
+Authentication/authorisation is activated in server profile and deactivated in desktop profile.
 
 Authentication/authorisation is configured in the following files in the `ocr4all/workspace/.ocr4all` folder (see below for an example setup): users, passwords and groups.
 After authentication in the application with administrative rights, the API can be used to manage users, passwords and groups.
 
-When the application starts in server mode and development mode is enabled, a default administrator user with login `admin` and password `ocr4all` is created if no administrator user exists.
-This behaviour can be enforced by setting the application property `ocr4all.application.security.administrator.create` to `true`.
+If the application uses server profile and, development profile is enabled and/or the application property `ocr4all.application.security.administrator.create` is set to `true`, a default administrator user is created with the login `admin` and password `ocr4all` if no administrator user exists.
 
-#### Example: rights management setup
+##### Example: rights management setup
 - **File user** `admin:active::Administrator user`
 - **File password** (password `ocr4all`) `admin:{bcrypt}$2a$10$rqYn8YjNLzegNMYZVFtvAuwAZBWFgZQ9bprHhjhHnk3oGUPdEPkYq`
 - **File group** `admin:active:admin:Administrator group`
@@ -66,11 +80,11 @@ This behaviour can be enforced by setting the application property `ocr4all.appl
 - Install models in `ocr4all/opt/ocr-d/resources`
   - **Calamari recognize** download desired [models](https://github.com/Calamari-OCR/calamari_models/releases/tag/1.1) in subfolder `ocrd-calamari-recognize`
 
-# API 
-## API documentation
+## API 
+### API documentation
 The Swagger UI for the API documentation can be accessed under `http://localhost:9090/api/doc/swagger-ui/` while `ocr4all-app` is running
 
-## Example
+### Example
 An example using the API
 ```
 instance
@@ -175,6 +189,19 @@ Body:
 “name”: “Calamari default”,
 “description”: “ocr-d Calamari default”
 }
+
+ocr: Tesseract recognize
+Method: POST
+URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/ws_01
+Body:
+{
+“id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.TesserocrRecognize”,
+“parent-snapshot”: {“track”: [1,1,1]},
+“name”: “Tesseract default”,
+“description”: “ocr-d Tesseract default”
+}
 ```
 
-Results will be available in the directory `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
+Results will be available in the directories:
+- **Calamari** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
+- **Tesseract** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/2/sandbox`
