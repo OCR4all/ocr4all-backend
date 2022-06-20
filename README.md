@@ -3,8 +3,8 @@ Master repository containing all required submodules to get the new OCR4all back
 
 ## Contained submodules
 * [ocr4all-app-persistence](https://github.com/OCR4all/ocr4all-app-persistence)
-* [ocr4all-app-spi](https://github.com/OCR4all/ocr4all-app-ocrd-spi)
-* [ocr4all-app-ocrd-spi](https://github.com/OCR4all/ocr4all-app-spi)
+* [ocr4all-app-spi](https://github.com/OCR4all/ocr4all-app-spi)
+* [ocr4all-app-ocrd-spi](https://github.com/OCR4all/ocr4all-app-ocrd-spi)
 * [ocr4all-app](https://github.com/OCR4all/ocr4all-app)
 
 ## Getting started
