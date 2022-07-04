@@ -40,7 +40,7 @@ Start the application in the project `ocr4all-app` with `java -jar target/ocr4al
 
 #### Defaults
 
-The defaults for the application are defined in the file `src/main/resources/application.ymly` of the project `ocr4all-app`. The server HTTP port is 8080. Several profiles are defined that can be used to control the behaviour of the application:
+The defaults for the application are defined in the file `src/main/resources/application.yml` of the project `ocr4all-app`. The server HTTP port is 8080. Several profiles are defined that can be used to control the behaviour of the application:
 - **desktop** disables security and stores the application data in the user's home directory `${user.home}/ocr4all`.
 - **server** enables security and stores the application data in the system directory `/srv/ocr4all`.
 - **api** activates the RESTful API interface
