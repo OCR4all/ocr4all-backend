@@ -14,25 +14,29 @@ Master repository containing all required submodules to get the new OCR4all back
 * `mvn`
 
 ### Download
-Clone this repository recursively
+Clone this repository recursively.
 ```
 git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4all-backend.git
 ```
 
+An [SSH Public key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+) connected with your GitHub-Account is required.
+
+
 ### Build 
-To build and run the `ocr4all-app`, either use your favorite IDE or create a JAR through your terminal:
+To build and run `ocr4all-app`, use your favorite IDE or create a JAR through your terminal:
 
 #### IDE
-- installing [Spring Tools](https://spring.io/tools) is heavily recommended
-- import all contained submodules as Maven project in the above-mentioned sequence in your IDE
+- installing [Spring Tools](https://spring.io/tools) is highly recommended
+- import all contained submodules as Maven projects in the above-mentioned sequence in your IDE
 - start the application using `Spring Tools` in `Boot Dashboard`
 
 #### Terminal
-- run `mvn clean install` in following projects in this order 
+- run `mvn clean install` in the projects following this order
   1. ocr4all-app-persistence
   2. ocr4all-app-spi
   3. ocr4all-app-ocrd-spi
-- in the project `ocr4all-app` run `mvn clean package` 
+- run `mvn clean package` in the project `ocr4all-app` 
 
 ### Application
 
@@ -40,7 +44,7 @@ Start the application in the project `ocr4all-app` with `java -jar target/ocr4al
 
 #### Defaults
 
-The defaults for the application are defined in the file `src/main/resources/application.yml` of the project `ocr4all-app`. The server HTTP port is 8080. Several profiles are defined that can be used to control the behaviour of the application:
+The defaults for the application are defined in the file `src/main/resources/application.yml` of the project `ocr4all-app`. The server HTTP port is set to **8080**. Several profiles are defined that can be used to control the behaviour of the application:
 - **desktop** disables security and stores the application data in the user's home directory `${user.home}/ocr4all`.
 - **server** enables security and stores the application data in the system directory `/srv/ocr4all`.
 - **api** activates the RESTful API interface
@@ -50,12 +54,18 @@ The defaults for the application are defined in the file `src/main/resources/app
 The development version uses the following profiles by default: server, api, documentation and development.
 
 #### Security
-Authentication/authorisation is activated in server profile and deactivated in desktop profile.
+Authentication/authorisation is activated in the server profile and deactivated in the desktop profile.
 
 Authentication/authorisation is configured in the following files in the `ocr4all/workspace/.ocr4all` folder (see below for an example setup): users, passwords and groups.
 After authentication in the application with administrative rights, the API can be used to manage users, passwords and groups.
 
-If the application uses server profile and, development profile is enabled and/or the application property `ocr4all.application.security.administrator.create` is set to `true`, a default administrator user is created with the login `admin` and password `ocr4all` if no administrator user exists.
+
+An default administrator user is created, 
+if the application has the server and development profile enabled and/or the application property `ocr4all.application.security.administrator.create` is set to
+`true` and no administrator user exists. The login credentials are
+- username: `admin`
+- password: `ocr4all`
+
 
 ##### Example: rights management setup
 - **File user** `admin:active::Administrator user`
@@ -204,6 +214,6 @@ Body:
 }
 ```
 
-Results will be available in the directories:
+Results will be available in the following directories:
 - **Calamari recognize** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
 - **Tesserocr recognize** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/2/sandbox`
