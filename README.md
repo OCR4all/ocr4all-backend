@@ -149,7 +149,7 @@ Body:
 “images”: [
 {“argument”: “images”, “values”: [1,2,3,4,5,6]}
 ],
-“name”: “launcher default with images”,
+“label”: “launcher default with images”,
 “description”: “description launcher default with images”
 }
 ```
@@ -163,7 +163,7 @@ Body:
 {
 “id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.preprocessing.provider.CISOcropyBinarize”,
 “parent-snapshot”: {“track”: []},
-“name”: “cis binarize default”,
+“label”: “cis binarize default”,
 “description”: “ocr-d cis ocropy binarize default”
 }
 
@@ -174,7 +174,7 @@ Body:
 {
 “id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.TesserocrSegmentRegion”,
 “parent-snapshot”: {“track”: [1]},
-“name”: “tesserocr segment region default”,
+“label”: “tesserocr segment region default”,
 “description”: “ocr-d tesserocr segment region default”
 }
 
@@ -186,7 +186,7 @@ Body:
 {
 “id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.TesserocrSegmentLine”,
 “parent-snapshot”: {“track”: [1,1]},
-“name”: “tesserocr segment line default”,
+“label”: “tesserocr segment line default”,
 “description”: “ocr-d tesserocr segment line default”
 }
 
@@ -197,7 +197,7 @@ Body:
 {
 “id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.CalamariRecognize”,
 “parent-snapshot”: {“track”: [1,1,1]},
-“name”: “Calamari default”,
+“label”: “Calamari default”,
 “description”: “ocr-d Calamari default”
 }
 
@@ -209,7 +209,7 @@ Body:
 “id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.TesserocrRecognize”,
 "selects": [{"argument": "models", "values": ["deu", "frk"]}],
 “parent-snapshot”: {“track”: [1,1,1]},
-“name”: “Tesserocr models”,
+“label”: “Tesserocr models”,
 “description”: “ocr-d Tesserocr models”
 }
 ```
