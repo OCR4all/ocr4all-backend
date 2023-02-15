@@ -96,7 +96,7 @@ Install [ImageMagick](https://imagemagick.org/script/download.php):
 The Swagger UI for the API documentation can be accessed under `http://localhost:9090/api/doc/swagger-ui/` while `ocr4all-app` is running
 
 ### Example
-An example of using the API in the desktop profile
+An example of using the API with the desktop, api, documentation and development profiles.
 ```
 instance
 Method: GET
