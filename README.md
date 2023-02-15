@@ -51,7 +51,7 @@ The defaults for the application are defined in the file `src/main/resources/app
 - **documentation** activates the RESTful API documentation with Swagger 2 
 - **development** uses server HTTP port 9090, provides more logging information and stores application data in the user's home directory `${user.home}/ocr4all`.
 
-The development version uses the following profiles by default: server, api, documentation and development.
+The development version uses the following profiles by default: desktop, api, documentation and development.
 
 #### Security
 Authentication/authorisation is activated in the server profile and deactivated in the desktop profile.
