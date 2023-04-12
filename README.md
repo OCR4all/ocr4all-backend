@@ -118,30 +118,30 @@ Method: POST
 URL: http://localhost:9090/api/v1.0/spi/import/schedule/project_01
 Body:
 {
-“id”: “de.uniwuerzburg.zpd.ocr4all.application.core.spi.imp.provider.ImageImport”,
-“strings”: [
-{“argument”: “source-folder”, “value”: “images”}
+"id": "de.uniwuerzburg.zpd.ocr4all.application.core.spi.imp.provider.ImageImport",
+"strings": [
+{"argument": "source-folder", "value": "images"}
 ],
-“selects”: [
-{“argument”: “image-formats”, “values”: [“tif”]}
+"selects": [
+{"argument": "image-formats", "values": ["tif"]}
 ]
 }
 
-Create a workflow
+Create a sandbox
 Method: GET
-URL: http://localhost:9090/api/v1.0/workflow/create/project_01?id=ws_01
+URL: http://localhost:9090/api/v1.0/sandbox/create/project_01?id=ws_01
 
-Launch the workflow
+Launch the sandbox
 Method: POST
 URL: http://localhost:9090/api/v1.0/spi/launcher/schedule/project_01/ws_01
 Body:
 {
-“id”: “de.uniwuerzburg.zpd.ocr4all.application.core.spi.launcher.provider.WorkflowLauncher”,
-“images”: [
-{“argument”: “images”, “values”: [1,2,3,4,5,6]}
+"id": "de.uniwuerzburg.zpd.ocr4all.application.core.spi.launcher.provider.SandboxLauncher",
+"images": [
+{"argument": "images", "values": [1,2,3,4,5,6]}
 ],
-“label”: “launcher default with images”,
-“description”: “description launcher default with images”
+"label": "launcher default with images",
+"description": "description launcher default with images"
 }
 ```
 
@@ -152,10 +152,10 @@ Method: POST
 URL: http://localhost:9090/api/v1.0/spi/preprocessing/schedule/project_01/ws_01
 Body:
 {
-“id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.preprocessing.provider.CISOcropyBinarize”,
-“parent-snapshot”: {“track”: []},
-“label”: “cis binarize default”,
-“description”: “ocr-d cis ocropy binarize default”
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.preprocessing.provider.CISOcropyBinarize",
+"parent-snapshot": {"track": []},
+"label": "cis binarize default",
+"description": "ocr-d cis ocropy binarize default"
 }
 
 olr: Segment region
@@ -163,10 +163,10 @@ Method: POST
 URL: http://localhost:9090/api/v1.0/spi/olr/schedule/project_01/ws_01
 Body:
 {
-“id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.TesserocrSegmentRegion”,
-“parent-snapshot”: {“track”: [1]},
-“label”: “tesserocr segment region default”,
-“description”: “ocr-d tesserocr segment region default”
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.TesserocrSegmentRegion",
+"parent-snapshot": {"track": [1]},
+"label": "tesserocr segment region default",
+"description": "ocr-d tesserocr segment region default"
 }
 
 olr: Segment line
@@ -175,10 +175,10 @@ Method: POST
 URL: http://localhost:9090/api/v1.0/spi/olr/schedule/project_01/ws_01
 Body:
 {
-“id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.TesserocrSegmentLine”,
-“parent-snapshot”: {“track”: [1,1]},
-“label”: “tesserocr segment line default”,
-“description”: “ocr-d tesserocr segment line default”
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.TesserocrSegmentLine",
+"parent-snapshot": {"track": [1,1]},
+"label": "tesserocr segment line default",
+"description": "ocr-d tesserocr segment line default"
 }
 
 ocr: Calamari recognize
@@ -186,10 +186,10 @@ Method: POST
 URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/ws_01
 Body:
 {
-“id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.CalamariRecognize”,
-“parent-snapshot”: {“track”: [1,1,1]},
-“label”: “Calamari default”,
-“description”: “ocr-d Calamari default”
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.CalamariRecognize",
+"parent-snapshot": {"track": [1,1,1]},
+"label": "Calamari default",
+"description": "ocr-d Calamari default"
 }
 
 ocr: Tesserocr recognize
@@ -197,14 +197,14 @@ Method: POST
 URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/ws_01
 Body:
 {
-“id”: “de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.TesserocrRecognize”,
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.TesserocrRecognize",
 "selects": [{"argument": "models", "values": ["deu", "frk"]}],
-“parent-snapshot”: {“track”: [1,1,1]},
-“label”: “Tesserocr models”,
-“description”: “ocr-d Tesserocr models”
+"parent-snapshot": {"track": [1,1,1]},
+"label": "Tesserocr models",
+"description": "ocr-d Tesserocr models"
 }
 ```
 
 Results will be available in the following directories:
-- **Calamari recognize** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
-- **Tesserocr recognize** `ocr4all/workspace/projects/project_01/workflows/ws_01/snapshots/derived/1/derived/1/derived/1/derived/2/sandbox`
+- **Calamari recognize** `ocr4all/workspace/projects/project_01/sandboxes/ws_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
+- **Tesserocr recognize** `ocr4all/workspace/projects/project_01/sandboxes/ws_01/snapshots/derived/1/derived/1/derived/1/derived/2/sandbox`
