@@ -199,7 +199,7 @@ URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/sandbox_01
 Body:
 {
 "id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.json.JsonTesserocrRecognize",
-"selects": [{"argument": "models", "values": ["deu", "frk"]}],
+"selects": [{"argument": "model", "values": ["deu", "frk"]}],
 "parent-snapshot": {"track": [1,1,1]},
 "label": "Tesserocr models",
 "description": "ocr-d Tesserocr models deu + frk"
