@@ -129,11 +129,11 @@ Body:
 
 Create a sandbox
 Method: GET
-URL: http://localhost:9090/api/v1.0/sandbox/create/project_01?id=ws_01
+URL: http://localhost:9090/api/v1.0/sandbox/create/project_01?id=sandbox_01
 
 Launch the sandbox
 Method: POST
-URL: http://localhost:9090/api/v1.0/spi/launcher/schedule/project_01/ws_01
+URL: http://localhost:9090/api/v1.0/spi/launcher/schedule/project_01/sandbox_01
 Body:
 {
 "id": "de.uniwuerzburg.zpd.ocr4all.application.core.spi.launcher.provider.SandboxLauncher",
@@ -149,10 +149,10 @@ Body:
 ```
 preprocessing: Binarize
 Method: POST
-URL: http://localhost:9090/api/v1.0/spi/preprocessing/schedule/project_01/ws_01
+URL: http://localhost:9090/api/v1.0/spi/preprocessing/schedule/project_01/sandbox_01
 Body:
 {
-"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.preprocessing.provider.CISOcropyBinarize",
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.preprocessing.provider.json.JsonCISOcropyBinarize",
 "parent-snapshot": {"track": []},
 "label": "cis binarize default",
 "description": "ocr-d cis ocropy binarize default"
@@ -160,10 +160,10 @@ Body:
 
 olr: Segment region
 Method: POST
-URL: http://localhost:9090/api/v1.0/spi/olr/schedule/project_01/ws_01
+URL: http://localhost:9090/api/v1.0/spi/olr/schedule/project_01/sandbox_01
 Body:
 {
-"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.TesserocrSegmentRegion",
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.json.JsonTesserocrSegmentRegion",
 "parent-snapshot": {"track": [1]},
 "label": "tesserocr segment region default",
 "description": "ocr-d tesserocr segment region default"
@@ -172,10 +172,10 @@ Body:
 olr: Segment line
 
 Method: POST
-URL: http://localhost:9090/api/v1.0/spi/olr/schedule/project_01/ws_01
+URL: http://localhost:9090/api/v1.0/spi/olr/schedule/project_01/sandbox_01
 Body:
 {
-"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.TesserocrSegmentLine",
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.olr.provider.json.JsonTesserocrSegmentLine",
 "parent-snapshot": {"track": [1,1]},
 "label": "tesserocr segment line default",
 "description": "ocr-d tesserocr segment line default"
@@ -183,28 +183,29 @@ Body:
 
 ocr: Calamari recognize
 Method: POST
-URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/ws_01
+URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/sandbox_01
 Body:
 {
-"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.CalamariRecognize",
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.json.JsonCalamariRecognize",
+"selects": [ {"argument": "checkpoint_dir", "values": ["fraktur_historical"]} ],
 "parent-snapshot": {"track": [1,1,1]},
-"label": "Calamari default",
-"description": "ocr-d Calamari default"
+"label": "Calamari model",
+"description": "ocr-d Calamari model fraktur_historical"
 }
 
 ocr: Tesserocr recognize
 Method: POST
-URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/ws_01
+URL: http://localhost:9090/api/v1.0/spi/ocr/schedule/project_01/sandbox_01
 Body:
 {
-"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.TesserocrRecognize",
+"id": "de.uniwuerzburg.zpd.ocr4all.application.ocrd.spi.ocr.provider.json.JsonTesserocrRecognize",
 "selects": [{"argument": "models", "values": ["deu", "frk"]}],
 "parent-snapshot": {"track": [1,1,1]},
 "label": "Tesserocr models",
-"description": "ocr-d Tesserocr models"
+"description": "ocr-d Tesserocr models deu + frk"
 }
 ```
 
 Results will be available in the following directories:
-- **Calamari recognize** `ocr4all/workspace/projects/project_01/sandboxes/ws_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
-- **Tesserocr recognize** `ocr4all/workspace/projects/project_01/sandboxes/ws_01/snapshots/derived/1/derived/1/derived/1/derived/2/sandbox`
+- **Calamari recognize** `ocr4all/workspace/projects/project_01/sandboxes/sandbox_01/snapshots/derived/1/derived/1/derived/1/derived/1/sandbox`
+- **Tesserocr recognize** `ocr4all/workspace/projects/project_01/sandboxes/sandbox_01/snapshots/derived/1/derived/1/derived/1/derived/2/sandbox`
