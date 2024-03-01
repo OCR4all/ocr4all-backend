@@ -10,7 +10,7 @@ Master repository containing all required submodules to get the new OCR4all back
 ## Getting started
 ### Requirements
 * `git`
-* `Java 11`
+* `Java 17`
 * `mvn`
 
 ### Download
@@ -93,7 +93,7 @@ Install [ImageMagick](https://imagemagick.org/script/download.php):
 
 ## API 
 ### API documentation
-The Swagger UI for the API documentation can be accessed under `http://localhost:9090/api/doc/swagger-ui/` while `ocr4all-app` is running
+The Swagger UI for the API documentation can be accessed under `http://localhost:9090/api/doc/swagger-ui/index.html` while `ocr4all-app` is running
 
 ### Example
 An example of using the API with the desktop, api, documentation and development profiles.
