@@ -53,6 +53,11 @@ The defaults for the application are defined in the file `src/main/resources/app
 
 The development version uses the following profiles by default: desktop, api, documentation and development.
 
+If you want to e. g. activate the desktop, api, documentation and development profiles you can use the following command:
+```
+java -jar -Dspring.profiles.active=desktop,api,documentation,development target/<YourJar>.jar
+```
+
 #### Security
 Authentication/authorisation is activated in the server profile and deactivated in the desktop profile.
 
