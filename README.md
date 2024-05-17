@@ -1,4 +1,4 @@
-# ocr4all-backend
+https://github.com/OCR4all/ocr4all-backend.git# ocr4all-backend
 Master repository containing all required submodules to get the new OCR4all backend (still WIP) up and running
 
 ## Contained submodules
@@ -21,7 +21,7 @@ Master repository containing all required submodules to get the new OCR4all back
 ### Download
 Clone this repository recursively.
 ```
-git clone --recurse-submodules --remote-submodules git@github.com:OCR4all/ocr4all-backend.git
+git clone --recurse-submodules --remote-submodules https://github.com/OCR4all/ocr4all-backend.git
 ```
 
 An [SSH Public key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
