@@ -22,7 +22,7 @@ services:
     user: "${UID:-}"
     restart: always
     environment:
-      - SPRING_PROFILES_ACTIVE=${OCRD_PROFILES:-logging-debug,msa-api,docker}
+      - SPRING_PROFILES_ACTIVE=${OCRD_PROFILES:-logging-debug,ocrd-logging-discard,msa-api,docker}
     volumes:
       - ${WORKSPACE_PROJECT:-~/ocr4all/docker/workspace/projects}:/srv/ocr4all/projects
       - ${WORKSPACE_RESOURCES_ORCD:-~/ocr4all/docker/opt/ocr-d/resources}:/usr/local/share/ocrd-resources
