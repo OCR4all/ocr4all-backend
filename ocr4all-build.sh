@@ -186,6 +186,17 @@ function install_ocr4all()
 }
 
 #
+# Install calamari artifacts.
+#
+function install_calamari()
+{
+	install_artifact "ocr4all-app-communication"
+	install_artifact "ocr4all-app-msa"
+	install_artifact "ocr4all-app-spi"
+	install_artifact "ocr4all-app-calamari-communication"
+}
+
+#
 # Install ocrd artifacts.
 #
 function install_ocrd()
@@ -204,6 +215,9 @@ function install_all()
 	install_ocr4all
 
 	install_artifact "ocr4all-app-msa"
+	
+#	install_artifact "ocr4all-app-calamari-communication"
+	install_artifact "ocr4all-app-ocrd-communication"
 }
 
 #
@@ -212,6 +226,14 @@ function install_all()
 function package_ocr4all()
 {
     package_application "ocr4all-app"
+}
+
+#
+# Package calamari applications.
+#
+function package_calamari()
+{
+     package_application "ocr4all-app-calamari-msa"
 }
 
 #
@@ -228,6 +250,7 @@ function package_ocrd()
 function package_all()
 {
     package_ocr4all
+#    package_calamari
     package_ocrd
 }
 
@@ -240,19 +263,23 @@ function print_help()
 	Usage: $0 <command>
 
 	where <command> is one of:
-	   install         - installs all artifacts
-	   package         - packages all applications
-	   build           - builds the complete application, i.e. installs all artifacts and packages all applications
+	   install          - installs all artifacts
+	   package          - packages all applications
+	   build            - builds the complete application, i.e. installs all artifacts and packages all applications
 
-	   install-ocr4all - installs the ocr4all artifacts
-	   package-ocr4all - packages the ocr4all application
-	   build-ocr4all   - builds the ocr4all application, i.e. installs the ocr4all artifacts and packages the ocr4all application
+	   install-ocr4all  - installs the ocr4all artifacts
+	   package-ocr4all  - packages the ocr4all application
+	   build-ocr4all    - builds the ocr4all application, i.e. installs the ocr4all artifacts and packages the ocr4all application
 
-	   install-ocrd    - installs the ocrd artifacts
-	   package-ocrd    - packages the ocrd application
-	   build-ocrd      - builds the ocrd application, i.e. installs the ocrd artifacts and packages the ocrd application
+	   install-calamari - installs the calamari artifacts
+	   package-calamari - packages the calamari application
+	   build-calamari   - builds the calamari application, i.e. installs the calamari artifacts and packages the calamari application
 
-	   help            - this screen
+	   install-ocrd     - installs the ocrd artifacts
+	   package-ocrd     - packages the ocrd application
+	   build-ocrd       - builds the ocrd application, i.e. installs the ocrd artifacts and packages the ocrd application
+
+	   help             - this screen
 	EOF
 }
 
@@ -297,7 +324,20 @@ case "$action" in
 		package_ocr4all
 		;;
 								
-    install-ocrd)
+    install-calamari)
+		install_calamari
+		;;
+		
+    package-calamari)
+		package_calamari
+		;;
+		
+    build-calamari)
+		install_calamari
+		package_calamari
+		;;
+								
+     install-ocrd)
 		install_ocrd
 		;;
 		
