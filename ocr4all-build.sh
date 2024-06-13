@@ -181,6 +181,8 @@ function install_ocr4all()
 	install_artifact "ocr4all-app-communication"
 	install_artifact "ocr4all-app-spi"
 	install_artifact "ocr4all-app-persistence"
+	install_artifact "ocr4all-app-calamari-communication"
+	install_artifact "ocr4all-app-calamari-spi"
 	install_artifact "ocr4all-app-ocrd-communication"
 	install_artifact "ocr4all-app-ocrd-spi"
 }
@@ -215,9 +217,6 @@ function install_all()
 	install_ocr4all
 
 	install_artifact "ocr4all-app-msa"
-	
-#	install_artifact "ocr4all-app-calamari-communication"
-	install_artifact "ocr4all-app-ocrd-communication"
 }
 
 #
@@ -250,7 +249,7 @@ function package_ocrd()
 function package_all()
 {
     package_ocr4all
-#    package_calamari
+    package_calamari
     package_ocrd
 }
 
