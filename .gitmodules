@@ -30,3 +30,15 @@
 	path = ocr4all-app-ocrd-msa
 	url = https://github.com/OCR4all/ocr4all-app-ocrd-msa.git
 	branch = develop
+[submodule "ocr4all-app-calamari-msa"]
+	path = ocr4all-app-calamari-msa
+	url = https://github.com/OCR4all/ocr4all-app-calamari-msa.git
+	branch = develop
+[submodule "ocr4all-app-calamari-communication"]
+	path = ocr4all-app-calamari-communication
+	url = https://github.com/OCR4all/ocr4all-app-calamari-communication.git
+	branch = develop
+[submodule "ocr4all-app-calamari-spi"]
+	path = ocr4all-app-calamari-spi
+	url = https://github.com/OCR4all/ocr4all-app-calamari-spi.git
+	branch = develop
