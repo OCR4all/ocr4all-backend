@@ -193,8 +193,8 @@ function install_ocr4all()
 function install_calamari()
 {
 	install_artifact "ocr4all-app-communication"
-	install_artifact "ocr4all-app-msa"
 	install_artifact "ocr4all-app-spi"
+	install_artifact "ocr4all-app-msa"
 	install_artifact "ocr4all-app-calamari-communication"
 }
 
@@ -204,8 +204,8 @@ function install_calamari()
 function install_ocrd()
 {
 	install_artifact "ocr4all-app-communication"
-	install_artifact "ocr4all-app-msa"
 	install_artifact "ocr4all-app-spi"
+	install_artifact "ocr4all-app-msa"
 	install_artifact "ocr4all-app-ocrd-communication"
 }
 
