@@ -10,6 +10,23 @@
 version: "3.9"
 
 services:
+  msa-calamari:
+    hostname: msa-calamari
+    build:
+      context: ocr4all-app-calamari-msa
+      dockerfile: Dockerfile
+      args:
+        - TAG=${CALAMARI_TAG:-20240502}
+        - JAVA_VERSION=${CALAMARI_JAVA_VERSION:-17}
+        - APP_VERSION=${CALAMARI_APP_VERSION:-1.0-SNAPSHOT}
+    user: "${UID:-}"
+    restart: always
+    environment:
+      -
+    volumes:
+      -
+    ports:
+      - "${OCRD_API_PORT:-127.0.0.1:9092}:8080"
   msa-ocrd:
     hostname: msa-ocrd
     build:
