@@ -22,11 +22,13 @@ services:
     user: "${UID:-}"
     restart: always
     environment:
-      -
+      - SPRING_PROFILES_ACTIVE=${CALAMARI_PROFILES:-logging-debug,calamari-logging-discard,msa-api,docker}
     volumes:
-      -
+      - ${OCR4ALL_DATA:-~/ocr4all/docker/data}:/srv/ocr4all/data
+      - ${OCR4ALL_ASSEMBLE:-~/ocr4all/docker/assemble}:/srv/ocr4all/assemble
+      - ${OCR4ALL_WORKSPACE_PROJECT:-~/ocr4all/docker/workspace/projects}:/srv/ocr4all/projects
     ports:
-      - "${OCRD_API_PORT:-127.0.0.1:9092}:8080"
+      - "${CALAMARI_API_PORT:-127.0.0.1:9092}:8080"
   msa-ocrd:
     hostname: msa-ocrd
     build:
@@ -41,8 +43,8 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=${OCRD_PROFILES:-logging-debug,ocrd-logging-discard,msa-api,docker}
     volumes:
-      - ${WORKSPACE_PROJECT:-~/ocr4all/docker/workspace/projects}:/srv/ocr4all/projects
-      - ${WORKSPACE_RESOURCES_ORCD:-~/ocr4all/docker/opt/ocr-d/resources}:/usr/local/share/ocrd-resources
+      - ${OCR4ALL_WORKSPACE_PROJECT:-~/ocr4all/docker/workspace/projects}:/srv/ocr4all/projects
+      - ${OCR4ALL_RESOURCES_ORCD:-~/ocr4all/docker/opt/ocr-d/resources}:/usr/local/share/ocrd-resources
     ports:
       - "${OCRD_API_PORT:-127.0.0.1:9091}:8080"
   server:
@@ -57,7 +59,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=${OCR4ALL_PROFILES:-logging-debug,server,api,documentation,docker}
     volumes:
-      - ${WORKSPACE:-~/ocr4all/docker}:/srv/ocr4all
+      - ${OCR4ALL_HOME:-~/ocr4all/docker}:/srv/ocr4all
     ports:
       - "${OCR4ALL_API_PORT:-9090}:8080"
     depends_on:
