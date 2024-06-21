@@ -2,12 +2,12 @@ UID=1000:100
 
 OCR4ALL_HOME=~/ocr4all/dev
 
-OCR4ALL_DATA=~/ocr4all/dev/projects
+OCR4ALL_DATA=~/ocr4all/dev/data
 OCR4ALL_ASSEMBLE=~/ocr4all/dev/assemble
 
 OCR4ALL_WORKSPACE_PROJECT=~/ocr4all/dev/workspace/projects
 OCR4ALL_RESOURCES_ORCD=~/ocr4all/dev/opt/ocr-d/resources
 
-#OCR4ALL_API_PORT=9190
+#OCR4ALL_API_PORT=9090
+#OCRD_API_PORT=127.0.0.1:9091
 #CALAMARI_API_PORT=127.0.0.1:9092
-#OCRD_API_PORT=127.0.0.1:9191

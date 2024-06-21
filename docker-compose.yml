@@ -63,4 +63,5 @@ services:
     ports:
       - "${OCR4ALL_API_PORT:-9090}:8080"
     depends_on:
+      - msa-calamari
       - msa-ocrd
