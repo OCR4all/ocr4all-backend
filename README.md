@@ -31,14 +31,14 @@ An [SSH Public key](https://docs.github.com/en/authentication/connecting-to-gith
 ### Build
 To steps are required to build the application:
 1. compile the libraries and package the jars: run the bash script `ocr4all-build.sh` with the argument `build`.
-1. build `docker` images: run `docker compose` with the argument `build`. The file `docker-env-dev` gives an example of a common setup of a development environment which stores the application data in the user's home directory `${user.home}/ocr4all`.
+1. build `docker` images: run `docker compose` with the argument `build`. The file `docker-env-dev` gives an example of a common setup of a development environment which stores the application data in the user's home directory `${user.home}/ocr4all/dev`.
 
 ### Application
-To start the application run `docker compose` with the argument `up`. The server HTTP port is set to **9090**. As by build, the file `docker-env-dev`gives an example of a common setup of a development environment.
+To start the application run `docker compose` with the argument `up`. The server HTTP port is set to **9090**. As by build, the file `docker-env-dev` gives an example of a common setup of a development environment.
 
 #### Defaults
 
-The defaults for the application are defined in the file `src/main/resources/application.yml` of the projects `ocr4all-app` and `ocr4all-app-ocrd-msa`. Several profiles are defined that can be used to control the behaviour of the application.
+The defaults for the application are defined in the file `src/main/resources/application.yml` of the projects `ocr4all-app`, `ocr4all-app-calamari-msa` and `ocr4all-app-ocrd-msa`. Several profiles are defined that can be used to control the behaviour of the application.
 
 #### Security
 Authentication/authorisation is activated in the server profile and deactivated in the desktop profile.
