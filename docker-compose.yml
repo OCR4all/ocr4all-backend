@@ -22,7 +22,7 @@ services:
     user: "${UID:-}"
     restart: always
     environment:
-      - SPRING_PROFILES_ACTIVE=${CALAMARI_PROFILES:-logging-debug,calamari-logging-discard,msa-api,docker}
+      - SPRING_PROFILES_ACTIVE=${CALAMARI_PROFILES:-logging-debug,msa-api,docker}
     volumes:
       - ${OCR4ALL_DATA:-~/ocr4all/docker/data}:/srv/ocr4all/data
       - ${OCR4ALL_ASSEMBLE:-~/ocr4all/docker/assemble}:/srv/ocr4all/assemble
@@ -41,7 +41,7 @@ services:
     user: "${UID:-}"
     restart: always
     environment:
-      - SPRING_PROFILES_ACTIVE=${OCRD_PROFILES:-logging-debug,ocrd-logging-discard,msa-api,docker}
+      - SPRING_PROFILES_ACTIVE=${OCRD_PROFILES:-logging-debug,msa-api,docker}
     volumes:
       - ${OCR4ALL_WORKSPACE_PROJECT:-~/ocr4all/docker/workspace/projects}:/srv/ocr4all/projects
       - ${OCR4ALL_RESOURCES_ORCD:-~/ocr4all/docker/opt/ocr-d/resources}:/usr/local/share/ocrd-resources
