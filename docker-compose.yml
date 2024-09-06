@@ -57,7 +57,7 @@ services:
     user: "${UID:-}"
     restart: always
     environment:
-      - SPRING_PROFILES_ACTIVE=${OCR4ALL_PROFILES:-logging-debug,server,api,documentation,docker}
+      - SPRING_PROFILES_ACTIVE=${OCR4ALL_PROFILES:-logging-debug,create_administrator,server,api,documentation,docker}
     volumes:
       - ${OCR4ALL_HOME:-~/ocr4all/docker}:/srv/ocr4all
     ports:
