@@ -4,6 +4,19 @@
 #
 # Assembles Docker images to run the ocr4all backend containers.
 #
+# Remark: If the UID is set to a user other than root, then all local volumes used in the docker-compose.yml file must first be created with this user.
+#         Otherwise, Docker will create these volumes with root user rights and the application will not be able to write to these volumes with the desired user.
+#         Mounted volumes:
+#             ~/ocr4all/
+#             ├── assemble
+#             ├── data
+#             ├── opt
+#             │   └── ocr-d
+#             │       └── resources
+#             ├── tmp
+#             └── workspace
+#                 └── projects
+#
 # Author: Herbert Baier (herbert.baier@uni-wuerzburg.de)
 # Date: 16.04.2024
 #
@@ -24,11 +37,11 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=${CALAMARI_PROFILES:-logging-debug,msa-api,docker}
     volumes:
-      - ${SERVER_DATA:-~/ocr4all/data}:/srv/ocr4all/data
       - ${SERVER_ASSEMBLE:-~/ocr4all/assemble}:/srv/ocr4all/assemble
-      - ${SERVER_WORKSPACE_PROJECT:-~/ocr4all/workspace/projects}:/srv/ocr4all/projects
+      - ${SERVER_DATA:-~/ocr4all/data}:/srv/ocr4all/data
       - ${SERVER_TEMPORARY:-~/ocr4all/tmp}:/srv/ocr4all/tmp
-    ports:
+      - ${SERVER_WORKSPACE_PROJECT:-~/ocr4all/workspace/projects}:/srv/ocr4all/projects
+     ports:
       - "${CALAMARI_API_PORT:-127.0.0.1:9092}:8080"
   msa-ocrd:
     hostname: msa-ocrd
@@ -44,8 +57,8 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=${OCRD_PROFILES:-logging-debug,msa-api,docker}
     volumes:
-      - ${SERVER_WORKSPACE_PROJECT:-~/ocr4all/workspace/projects}:/srv/ocr4all/projects
       - ${SERVER_RESOURCES_ORCD:-~/ocr4all/opt/ocr-d/resources}:/usr/local/share/ocrd-resources
+      - ${SERVER_WORKSPACE_PROJECT:-~/ocr4all/workspace/projects}:/srv/ocr4all/projects
     ports:
       - "${OCRD_API_PORT:-127.0.0.1:9091}:8080"
   server:
@@ -58,7 +71,9 @@ services:
     user: "${UID:-}"
     restart: always
     environment:
-      - SPRING_PROFILES_ACTIVE=${SERVER_PROFILES:-logging-debug,create_administrator,server,api,documentation,docker}
+      - SPRING_PROFILES_ACTIVE=${SERVER_PROFILES:-logging-debug,create-administrator,server,api,documentation,docker}
+      - OCR4ALL_APPLICATION_SECURITY_ADMINISTRATOR_LOGIN=${SERVER_ADMINISTRATOR_LOGIN:-admin}
+      - OCR4ALL_APPLICATION_SECURITY_ADMINISTRATOR_PASSWORD=${SERVER_ADMINISTRATOR_PASSWORD:-ocr4all}
     volumes:
       - ${SERVER_HOME:-~/ocr4all}:/srv/ocr4all
     ports:
