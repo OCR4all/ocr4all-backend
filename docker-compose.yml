@@ -40,8 +40,7 @@ services:
       - ${SERVER_ASSEMBLE:-~/ocr4all/assemble}:/srv/ocr4all/assemble
       - ${SERVER_DATA:-~/ocr4all/data}:/srv/ocr4all/data
       - ${SERVER_TEMPORARY:-~/ocr4all/tmp}:/srv/ocr4all/tmp
-      - ${SERVER_WORKSPACE_PROJECT:-~/ocr4all/workspace/projects}:/srv/ocr4all/projects
-     ports:
+    ports:
       - "${CALAMARI_API_PORT:-127.0.0.1:9092}:8080"
   msa-ocrd:
     hostname: msa-ocrd
