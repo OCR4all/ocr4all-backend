@@ -48,7 +48,7 @@ services:
       context: ocr4all-app-ocrd-msa
       dockerfile: Dockerfile
       args:
-        - TAG=${OCRD_TAG:-2024-04-29}
+        - TAG=${OCRD_TAG:-2024-07-17}
         - JAVA_VERSION=${OCRD_JAVA_VERSION:-17}
         - APP_VERSION=${OCRD_APP_VERSION:-1.0-SNAPSHOT}
     user: "${UID:-}"
